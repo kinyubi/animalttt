@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Launch Tic-Tac-Toe </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+  <!--[if IE]>
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <![endif]-->
+
+  <link rel="stylesheet" href="/css/plugins/colorbox/colorbox.css?v=1" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+
+  <script src="/js/plugins/jquery/jquery-3.6.min.js"></script>
+  <script src="/js/plugins/colorbox/jquery.colorbox.js"></script>
+  <script src=""></script>
+
+  <style>
+    section {
+      text-align: center;
+      display: grid;
+      grid-template-rows: 120px 40px 200px auto;
+
+      grid-template-columns: 100%;
+
+      grid-template-areas:
+          "title"
+          "subhead"
+          "button"
+          "." ;
+    }
+
+    .mid {justify-items: center; align-items: center;}
+
+    .title {grid-area: title; height:120px}
+    .subhead {grid-area: subhead; height:40px}
+    .button-container {grid-area: button; }
+    img {margin: auto; vertical-align: middle}
+
+    h1 {
+        font-family: "Rock Salt", Times, serif;
+        font-size: 55px;
+        color: #00aabe;
+        margin: auto;
+    }
+    .h-100 {min-height: 100%}
+
+    /* forces body to 100% of window */
+    html, body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      color: #00aabe;
+    }
+
+  </style>
+</head>
+<body>
+<section class="mid">
+  <div class="title h-100 mid"><h1 class=>Hi Lisa!</h1></div>
+
+  <div class="subhead mid"><h2>(push the tic-tac-toe button)</h2></div>
+  <div class="button-container mid">
+    <a class="tic-tac-toe cboxElement mid" href="/tictactoe/tictactoe.html">
+      <img src="/images/tictactoe/tic.jpg" alt="Tic-Tac-Toe" onclick="disableScroll()" class="sb practice-button" title="">
+    </a>
+  </div>
+
+</section>
+
+
+<script>
+  function disableScroll() {document.body.classList.add("body__scroll_disable");}
+
+  $(document).ready(function () {
+    $(".tic-tac-toe").colorbox({
+      iframe: true, width: "750px", maxHeight: "100%", height: "1000px", minWidth: "50%", minHeight: "50%",
+      top: 0, overlayClose: false, scrolling: false
+    });
+
+  });
+</script>
+</body>
+</html>
+
+

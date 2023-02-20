@@ -1,0 +1,237 @@
+/*
+position: static    - default (no top, left-bottom, right attributes
+position: relative  - positioned relative to its original location
+position: fixed     - positioned relative to viewport
+position: absolute  - relative to its closest ancestor (hopwfully that's usually the parent
+
+this is all based on a container that is 550W x 730h
+ */
+.ttt-container {
+    font-family: "Arial", sans-serif;
+    background-color: transparent;
+    height: 730px;
+    width: 550px;
+}
+
+.no-display {display: none}
+
+section {
+    text-align: center; display: grid;
+    grid-template-rows: 130px 180px 180px 180px 160px 100px;
+    grid-template-columns: 80px 180px 180px 180px 80px;
+
+    grid-template-areas:
+        "title title title title title"
+        "left r1c1  r1c2  r1c3  right"
+        "left r2c1  r2c2  r2c3  right"
+        "left r3c1  r3c2  r3c3  right"
+        ".    man   man   man    .  "
+        " .    .   overs   .      . ";
+    height: 100vh;
+    width: 100vw;
+    resize: both;
+}
+
+.choice--grid {
+    display: grid;
+    grid-template-rows: 80px 25px;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-areas:
+        "c0 c1 c2 c3 c4"
+        "msg msg msg msg msg";
+    margin: auto;
+}
+
+.home-box--grid {
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-areas: ". . pxx . .";
+}
+
+#home-box [id^='t'] {
+    grid-area: pxx;
+    margin-top: 25px
+}
+
+#choice-0 {grid-area: c0;}
+
+#choice-1 {grid-area: c1;}
+
+#choice-2 {grid-area: c2;}
+
+#choice-3 {grid-area: c3;}
+
+#choice-4 {grid-area: c4;}
+#choose-player {
+    grid-area: msg;
+    color: #00aabe;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+}
+
+
+#s-0 {grid-area: r1c1;}
+
+#s-1 {grid-area: r1c2;}
+
+#s-2 {grid-area: r1c3;}
+
+#s-3 {grid-area: r2c1;}
+
+#s-4 {grid-area: r2c2;}
+
+#s-5 {grid-area: r2c3;}
+
+#s-6 {grid-area: r3c1;}
+
+#s-7 {grid-area: r3c2;}
+
+#s-8 {grid-area: r3c3;}
+
+#right {
+    grid-area: right;
+    position: relative;
+}
+
+#left {grid-area: left}
+
+#home-box {grid-area: man}
+
+#buttons {grid-area: overs}
+
+
+h1 {
+    font-family: "Rock Salt", Times, serif;
+    font-size: 55px;
+    color: #00aabe;
+    margin: auto;
+}
+
+#game-title {
+    grid-area: title;
+    color: #d7a62f;
+    height: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#game-title:after {margin-bottom: 30px}
+
+#output {background-color: green; top: 0; bottom: 0; left: 0; right: 0; position: fixed;}
+
+.square > div {align-self: center; justify-self: center}
+
+.square > img {align-self: center; justify-self: center}
+
+.dragover {
+    opacity: 0.4;
+}
+
+button.ticTacToe {
+    background-color: #00aabe;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 120px;
+}
+
+
+.man-wrapper {
+    /*display: table-cell;*/
+    display: grid;
+    vertical-align: middle;
+    width: 110px;
+    height: 110px;
+    opacity: 1.0;
+}
+
+.man {
+    justify-content: center; align-items: center;
+}
+
+
+.gamePiece {
+    /*width: 65px;*/
+    /*height: 65px;*/
+    margin: 0;
+    z-index: 100;
+}
+
+.caption {
+    width: 70px;
+    height: 30px;
+    text-align: center;
+}
+
+
+.row__ticTacToe:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.square {
+    display: grid;
+    font-family: Muli, sans-serif;
+    font-size: 50px;
+    color: darkgoldenrod;
+    background-color: transparent;
+    user-select: none;
+}
+
+.border__right {
+    border-right: 5px solid #00aabe;
+}
+
+.border__bottom {
+    border-bottom: 5px solid #00aabe;
+}
+
+#new-game {
+    text-align: center;
+    padding-top: 15px;
+}
+
+/**
+While an object is being dragged it is given the 'dragging' class.
+it will be semi-transparent while dragging
+ */
+.dragging {opacity: 0.5;}
+
+/*.dragover {background-color: #f2fbfc; opacity: 1}*/
+/*.dragover {background-color: white; opacity: 0.5}*/
+
+.choice {
+    z-index: 1;
+    border: 5px outset lightgrey;
+
+    border-radius: 8px;
+    margin: 24px;
+    display: grid;
+}
+
+.choice-box {
+    border-radius: 15px;
+    border: 3px solid lightgrey;
+    padding: 5px;
+}
+
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 3px solid #73AD21;
+}
+
+.bottom-left {
+    position: absolute; /* position the element absolutely */
+    bottom: 0; /* position the element at the bottom */
+    left: 0; /* position the element at the left */
+    color: #99dde5;
+    margin-bottom: 20px;
+}

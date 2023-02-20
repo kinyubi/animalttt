@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rock Salt">
+  <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+  <link rel="stylesheet" href="/css/plugins/colorbox/colorbox.css">
+  <link rel="stylesheet" href="/css/toggle.css">
+  <!--  <link rel="stylesheet" href="/css/phonics.css">-->
+  <link rel="stylesheet" href="/tictactoe/tictactoe.css">
+
+  <script src="/js/plugins/jquery/jquery-3.6.min.js"></script>
+  <script src="/js/plugins/colorbox/jquery.colorbox.js"></script>
+
+  <script src="/tictactoe/events.js"></script>
+  <script src="/tictactoe/tictactoe.js"></script>
+
+</head>
+<body>
+
+<section id="page" class="ttt-container">
+
+  <header id="game-title"><h1>Tic-Tac-Toe</h1></header>
+
+  <div id="s-0" class=" square receptacle border__right border__bottom text-center row1 col1"></div>
+  <div id="s-1" class=" square receptacle border__right border__bottom  text-center row1 col2">-</div>
+  <div id="s-2" class="square receptacle border__bottom  text-center row1 col3">-</div>
+
+
+  <div id="s-3" class="  square receptacle border__right border__bottom text-center">-</div>
+  <div id="s-4" class=" square receptacle border__right border__bottom text-center">-</div>
+  <div id="s-5" class=" square receptacle border__bottom text-center">-</div>
+
+  <div id="s-6" class="  square receptacle border__right  text-center">-</div>
+  <div id="s-7" class=" square receptacle border__right  text-center">-</div>
+  <div id="s-8" class=" square receptacle  text-center">-</div>
+
+
+  <div id="home-box" class="choice--grid"></div>
+  <div id="buttons" style="margin: 24px">
+    <button hidden id="new-game" class="ticTacToe " onClick="window.location.reload();">New Game</button>
+    <div id="choose-player">Pick the player you want...</div>
+  </div>
+  <div id="left">
+    <div class="bottom-left">
+      <div>sound</div>
+      <label class="switch">
+        <input id="tt-sound" name="tt-sound" type="checkbox" >
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,595 @@
+/* MAKE SURE YOU MAINTAIN PHONICS.CSS and PHONICS.MOBILE.CSS TOGETHER */
+
+/* version 1.0407.0 */
+
+
+:root {
+  --vowel-tile: #E36B7B;
+  --vowel-tile--hover: #FC7788;
+  --tile-dim: 6vw;
+  --tile-font-size: 4vw;
+  --tile-margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+      --tile-dim: 2em;
+      --tile-font-size: 1.4em;
+      --tile-margin: 2px;
+  }
+}
+
+/* Bootstrap custom defined colors */
+
+.sample-readxyz {
+  background-color: var(--readxyz);
+}
+
+/* 00aabe */
+
+.sample-readlite {
+  background-color: var(--readlite);
+}
+
+/* 99dde5 */
+
+.sample-readultra {
+  background-color: var(--readultra);
+}
+
+/* f2fbfc */
+
+.sample-readred {
+  background-color: var(--readred);
+}
+
+/* f05e58 */
+
+html, body {
+  width: auto!important;
+  overflow-x: hidden!important;
+}
+
+article, aside, details, dialog, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.3;
+  background: white;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, tr {
+  text-align: left;
+  font-weight: normal;
+  float: none;
+}
+
+table, th, tr, td {
+  vertical-align: middle;
+  background-color: white;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+a img {
+  border: none;
+}
+
+:focus {
+  outline: 0;
+}
+
+/* basic defaults */
+
+ul {
+  list-style-type: disc;
+}
+
+ul li {
+  margin: 0 0 0 30px;
+  padding: 0 0 0 12px;
+}
+
+/* ----sound and spelling----------------------- */
+
+.sound {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: inherit;
+  font-weight: bold;
+  color: #666;
+  border: solid 1px grey;
+  border-radius: 5px;
+  text-align: center;
+  background: bisque;
+  margin: 1px;
+  padding: 3px;
+}
+
+.spelling {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: inherit;
+  color: red;
+}
+
+
+/* ------------------------ */
+
+#canvas-container {
+  border: black 1px solid;
+  width: 810px;
+  height: 810px;
+}
+
+img.floatLeft {
+  float: left;
+  margin: 4px;
+}
+
+img.floatRight {
+  float: right;
+  margin: 4px;
+}
+
+table.wordlist tr {
+  border: none;
+}
+
+table.wordlist td {
+  border: none;
+  color: #cccccc;
+}
+
+table.wordlist td.current {
+  border: none;
+  color: #ff00ff;
+}
+
+table.wordlist td.processed {
+  border: none;
+  color: #000000;
+}
+
+.red {
+  color: red;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+/* thumb class */
+
+img.thumb {
+  padding: 5px !important;
+  width: 90%;
+}
+
+img:hover.thumb {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.bdp-thumb img {
+  max-width: 100%;
+  height: auto;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.pronounce-thumb img {
+  max-width: 100%;
+  height: auto;
+  padding: 5px;
+}
+
+/* info-thumb class */
+
+img.info-thumb {
+  padding: 5px !important;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+img:hover.info-thumb {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+td.info-thumb {
+  width: 100px;
+  text-align: center;
+}
+
+.bordered {
+  border: 2px solid #444 !important;
+}
+
+/* button code to handle hover effect */
+
+.btn-img {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.btn-img:active {
+  opacity: 0.3;
+  transition: opacity 0.1s;
+}
+
+.btn-img-shadow-round {
+  border-radius: 50%;
+}
+
+.btn-img-shadow, .btn-img-shadow-round {
+  box-shadow: none;
+  transition: box-shadow 0.5s;
+}
+
+.btn-img-shadow:hover, .btn-img-shadow-round:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.progressButton {
+  font-family: "Comic Sans MS", Geneva, sans-serif;
+  border: 3px solid var(--readxyz);
+  color: var(--readxyz);
+  line-height: 1.5rem;
+  font-size: 150%;
+  padding: 3px;
+  margin: 8px;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.img-scale {
+  object-fit: scale-down;
+}
+
+a.img-contain {
+  position: relative;
+}
+
+/*
+The CSS will scale down an image placed within an element with the class .img-contain
+and center it within the element. The image will be automatically sized while maintaining
+its aspect ratio so that it fits within the element. The position is set to absolute so
+that it is centered within the element. The top, bottom, left, and right properties are
+set to 0 so that the image is aligned to the edges of the element. The margin is set to
+auto so that the image is centered within the element.
+ */
+a.img-contain img {
+  object-fit: scale-down;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.image-container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 70px;
+  height: 70px;
+}
+
+.contained-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bw3 {
+  border-width: 3px;
+  border-style: solid;
+}
+
+
+.modal-backdrop.in {
+  opacity: 0.2 !important;
+}
+
+[id*=-tab] {
+  color: dimgray !important;
+}
+
+
+/* classes based on screen size (if using max-width order largest to smallest) */
+
+.nodec {
+  text-decoration: none !important;
+}
+
+/* @formatter:off */
+/* Responsive font sizes for bootstrap */
+
+@media (max-width: 1200px) {
+  legend {font-size: calc(1.275rem + 0.3vw);}
+  h1, .h1 {font-size: calc(1.375rem + 1.5vw);}
+  h2, .h2 {font-size: calc(1.325rem + 0.9vw);}
+  h3, .h3 {font-size: calc(1.3rem + 0.6vw);}
+  h4, .h4 {font-size: calc(1.275rem + 0.3vw);}
+  h5, .h5 {font-size: calc(1.2rem + 0.2vw);}
+  .display-1 {font-size: calc(1.725rem + 5.7vw);}
+  .display-2 {font-size: calc(1.675rem + 5.1vw);}
+  .display-3 {font-size: calc(1.575rem + 3.9vw);}
+  .display-4 {font-size: calc(1.475rem + 2.7vw);}
+  .close {font-size: calc(1.275rem + 0.3vw);}
+}
+
+/* 0 - 575 pixels wide - phone */
+
+@media (max-width: 575px) {
+  .sfp {font-size: .6rem !important;}
+  .wordlist {font-size: 1.5rem !important;}
+  .scaled {transform: scale(.5, .5);}
+  .size--tab-icon {height: 50px;width: 50px;}
+  .size--side-icon {height: 24px;width: 24px;}
+  .size--key-icon {height: 35px;width: 35px;}
+  .size--list-icon {height: 18px;width: 18px;}
+  .height--title-bar {height: 60px;}
+  .button-text {font-size: 1rem;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .sfp {font-size: .6rem !important;}
+  .wordlist {font-size: 2rem !important;}
+  .scaled {transform: scale(.6, .6);}
+  .size--tab-icon {height: 50px;width: 50px;}
+  .size--side-icon {height: 30px;width: 30px;}
+  .size--key-icon {height: 45px;width: 45px;}
+  .size--list-icon {height: 24px;width: 24px;}
+  .height--title-bar {height: 50px;}
+  .button-text {font-size: 1.1rem;}
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .sfp {font-size: .75rem !important;}
+  .wordlist {font-size: 2.5rem !important;}
+  .scaled {transform: scale(.75, .75);}
+  .size--tab-icon {height: 42px;width: 42px;}
+  .size--side-icon {height: 40px;width: 40px;}
+  .size--key-icon {height: 60px;width: 60px;}
+  .size--list-icon {height: 30px;width: 30px;}
+  .height--title-bar {height: 60px;}
+  .button-text {font-size: 1.25rem;}
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  .sfp {font-size: .75rem !important;}
+  .wordlist {font-size: 3.0rem !important;}
+  .scaled {transform: scale(1.0, 1.0);}
+  .size--tab-icon {height: 60px;width: 60px;}
+  .size--side-icon {height: 50px;width: 50px;}
+  .size--key-icon {height: 75px;width: 75px;}
+  .size--list-icon {height: 35px;width: 35px;}
+  .height--title-bar {height: 60px;}
+  .button-text {font-size: 1.5rem;}
+}
+
+
+
+.float-input input {
+  float: left;
+}
+
+/* see: https://www.geeksforgeeks.org/how-to-disable-scrolling-temporarily-using-javascript/ */
+
+/* IOS needs this at least or colorbox iframes move around */
+
+.body__scroll_disable {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* used for colorbox games iframe in base.html.twig line 92 */
+
+.gameFrame {
+  border: 2px solid dimgray;
+}
+
+/* override navbar-nav active color */
+
+.nav-item.a:not(.active) {
+  background-color: var(--readlite) !important;
+}
+
+/* override navbar-nav active color */
+
+.nav-item.active {
+  background-color: var(--readxyz) !important;
+}
+
+.nav-item:focus .nav-item:hover {
+  background-color: var(--readxyz) !important;
+}
+
+.bg-tab {
+  background-color: var(--readlite) !important;
+}
+
+/* classes to handle background images in accordion */
+
+.accordion--image {
+  height: 6vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.accordion--expanded {
+  background-image: url("/images/lessonlist/accordion-expanded.png");
+}
+
+.accordion--collapsed {
+  background-image: url("/images/lessonlist/accordion-unexpanded.png");
+}
+
+.lesson-list--width {
+  max-width: 500px !important;
+  width: 90%;
+}
+
+.mastery--image {
+  height: 2em;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.mastery--no-mastery {
+  background-image: url("/images/lessonlist/lesson-nomastery.png");
+}
+
+.mastery--advancing {
+  background-image: url("/images/lessonlist/lesson-advancing.png");
+}
+
+.mastery--mastered {
+  background-image: url("/images/lessonlist/lesson-mastered.png");
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.bg-position--left {
+  background-position: left;
+}
+
+.bg-position--center {
+  background-position: center;
+}
+
+.bg-info {
+  background-image: url("/images/sidebar/info.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent !important;
+  height: 50px;
+  width: 50px;
+  transition: background-image 0.7s ease-in-out;
+}
+
+.bg-info:hover {
+  background-image: url("/images/sidebar/info-hover.png");
+  transition: background-image 0.7s ease-in-out;
+}
+
+.bg-image--title {
+  background-image: url("/images/readxyzlogo2-2020.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+  margin-left: 0;
+}
+
+.bg-contain {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 70px !important;
+}
+
+.font {
+  max-width: 600px;
+}
+
+/* Customize some of the bootstrap breadcrumb class attributes */
+
+.breadcrumb {
+  margin: 0 1rem !important;
+  padding: 0 !important;
+  background-color: white !important;
+  -ms-flex-align: baseline !important;
+  align-items: baseline !important;
+}
+
+/*.center-x {*/
+/*  margin: 0;*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  left: 50%;*/
+/*  -ms-transform: translate(-50%, -50%);*/
+/*  transform: translate(-50%, -50%);*/
+/*}*/
+
+/* define styling for the tiles in the spinner(spell) tab and the write tab */
+/* use with .wordlist .size--list-icon */
+.tile {
+    width: var(--tile-dim);
+    height: var(--tile-dim);
+    line-height:  calc(var(--tile-dim) - 8px);
+    font-size: var(--tile-font-size);
+    font-weight: bold;
+	border-style: solid;
+	border-width: 1px;
+    cursor: pointer;
+    vertical-align: middle;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 2px 2px 1px #888888;
+	margin: 3px !important;
+    padding:3px !important;
+}
+.tile-vowel {background-color: var(--vowel-tile)}
+.tile-vowel:hover {background-color: var(--vowel-tile--hover)}
+/* .tile-consonant {background-color: white} */
+.tile-consonant {background-color: #99dde5}
+.tile-consonant:hover {background-color: var(--readxyz)}
+
+.tile-letter {
+  font-size: var(--tile-font-size);
+  line-height: var(--tile-dim);
+  font-weight: bold;
+  margin: 3px !important;
+}
+
+.sbr {
+  border-radius: 50%;
+}
+
+.sb, .sbr {
+  box-shadow: none;
+  transition: box-shadow 0.5s;
+}
+
+.sb:hover, .sbr:hover {
+  /*box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);*/
+}
+
+
