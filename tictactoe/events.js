@@ -73,6 +73,7 @@ let handleDrop = (event) => {
 let addContainerHandlers = (selector) => {
   let $targets = $(selector)
   // $targets.css("z-index", "10");
+  console.log(`AddContainerHandlers for ${selector}`)
   $targets.on({
 
     dragover: (event)  => {event.preventDefault();},
@@ -82,8 +83,6 @@ let addContainerHandlers = (selector) => {
       logEvent(event);
       let selector = '#s-' + event.target.id[2]
       $(selector).css("background-color", "#f2fbfc")
-      // logEvent(event, "adds dragpver class to  " + selector)
-      // $(selector).addClass("dragover")
     },
 
     dragleave: (event) => {
@@ -91,18 +90,19 @@ let addContainerHandlers = (selector) => {
       logEvent(event);
       let selector = '#s-' + event.target.id[2]
       $(selector).css("background-color", "white")
-      // logEvent(event, "removes dragpver class to  " + selector)
-      // $(selector).removeClass("dragover")
     },
 
-    drop: (event) => handleDrop(event)
+    drop: (event) => {
+      handleDrop(event)
+      logEvent(event)
+    }
   })
 }
 
 let addMovedItemHandlers = (selector) => {
   let $targets = $(selector)
   $targets.attr("draggable", "true");
-
+  console.log(`addMovedItemHandlers for ${selector}`)
   $targets.on({
     dragstart: (event) => {
       logEvent(event)

@@ -6,110 +6,34 @@ position: absolute  - relative to its closest ancestor (hopwfully that's usually
 
 this is all based on a container that is 550W x 730h
  */
+
+/* =======================================================
+TITLE AND GAMEBOARD - Grid defined by ttt-continer
+8 COLUMNS
+7 ROWS
+ROW 1      : TITLE
+ROWS 2 - 4 : game board
+ROW 5      : Pieces / Home box
+ROW 6      : Message row
+ROW 7      : Button row
+========================================================== */
+
 .ttt-container {
+    text-align: center; display: grid;
+    grid-template-columns: 40px 90px 90px 90px 90px 90px 90px 40px;
+    grid-template-rows: 130px 180px 180px 180px 100px 50px 60px;
+
+
     font-family: "Arial", sans-serif;
     background-color: transparent;
-    height: 730px;
-    width: 550px;
-}
-
-.no-display {display: none}
-
-section {
-    text-align: center; display: grid;
-    grid-template-rows: 130px 180px 180px 180px 160px 100px;
-    grid-template-columns: 80px 180px 180px 180px 80px;
-
-    grid-template-areas:
-        "title title title title title"
-        "left r1c1  r1c2  r1c3  right"
-        "left r2c1  r2c2  r2c3  right"
-        "left r3c1  r3c2  r3c3  right"
-        ".    man   man   man    .  "
-        " .    .   overs   .      . ";
-    height: 100vh;
-    width: 100vw;
+    height: 1000px;
+    width: 1000px;
     resize: both;
 }
-
-.choice--grid {
-    display: grid;
-    grid-template-rows: 80px 25px;
-    grid-template-columns: 100px 100px 100px 100px 100px;
-    grid-template-areas:
-        "c0 c1 c2 c3 c4"
-        "msg msg msg msg msg";
-    margin: auto;
-}
-
-.home-box--grid {
-    display: grid;
-    grid-template-rows: 100px;
-    grid-template-columns: 100px 100px 100px 100px 100px;
-    grid-template-areas: ". . pxx . .";
-}
-
-#home-box [id^='t'] {
-    grid-area: pxx;
-    margin-top: 25px
-}
-
-#choice-0 {grid-area: c0;}
-
-#choice-1 {grid-area: c1;}
-
-#choice-2 {grid-area: c2;}
-
-#choice-3 {grid-area: c3;}
-
-#choice-4 {grid-area: c4;}
-#choose-player {
-    grid-area: msg;
-    color: #00aabe;
-    font-family: Roboto, sans-serif;
-    font-size: 20px;
-}
-
-
-#s-0 {grid-area: r1c1;}
-
-#s-1 {grid-area: r1c2;}
-
-#s-2 {grid-area: r1c3;}
-
-#s-3 {grid-area: r2c1;}
-
-#s-4 {grid-area: r2c2;}
-
-#s-5 {grid-area: r2c3;}
-
-#s-6 {grid-area: r3c1;}
-
-#s-7 {grid-area: r3c2;}
-
-#s-8 {grid-area: r3c3;}
-
-#right {
-    grid-area: right;
-    position: relative;
-}
-
-#left {grid-area: left}
-
-#home-box {grid-area: man}
-
-#buttons {grid-area: overs}
-
-
-h1 {
-    font-family: "Rock Salt", Times, serif;
-    font-size: 55px;
-    color: #00aabe;
-    margin: auto;
-}
-
+/* shorthand for specifying a grid area is: */
+/*grid-row-start, grid-column-start, grid-row-end, and grid-column-end*/
 #game-title {
-    grid-area: title;
+    grid-area: 1 / 1 / 1 / 8;
     color: #d7a62f;
     height: 100%;
     text-align: center;
@@ -117,6 +41,52 @@ h1 {
 }
 
 #game-title:after {margin-bottom: 30px}
+
+#s-0 {grid-area: 2 / 2 / span 1 / span 2;}
+#s-1 {grid-area: 2 / 4 / span 1 / span 2;}
+#s-2 {grid-area: 2 / 6 / span 1 / span 2;}
+#s-3 {grid-area: 3 / 2 / span 1 / span 2;}
+#s-4 {grid-area: 3 / 4 / span 1 / span 2;}
+#s-5 {grid-area: 3 / 6 / span 1 / span 2;}
+#s-6 {grid-area: 4 / 2 / span 1 / span 2;}
+#s-7 {grid-area: 4 / 4 / span 1 / span 2;}
+#s-8 {grid-area: 4 / 6 / span 1 / span 2;}
+
+#left {
+    grid-area: 2 / 1 / span 5 /  span 1;
+    position: relative;
+}
+
+#right {grid-area: 2 / 8 / span 5 /  span 1;}
+#choice-0 {grid-area: 5 / 2 / span 1 / span 1;}
+#choice-1 {grid-area: 5 / 3 / span 1 / span 1;}
+#choice-2 {grid-area: 5 / 4 / span 1 / span 1;}
+#choice-3 {grid-area: 5 / 5 / span 1 / span 1;}
+#choice-4 {grid-area: 5 / 6 / span 1 / span 1;}
+#choice-5 {grid-area: 5 / 7 / span 1 / span 1;}
+
+#home-box {grid-area: 5 / 4 / span 1 / span 2;}
+#choices  {grid-area: 5 / 2 / span 1 / span 6;}
+#choose-player {
+    grid-area:  6 / 3 / span 1 / span 4;
+    color: #00aabe;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+}
+#sound-control {grid-area: 7 / 1 / 7 / 3;}
+#buttons {grid-area: 7 / 4 / 7 / 5;}
+
+/* =======================================================
+END CONTROLS
+========================================================== */
+
+h1 {
+    font-family: "Rock Salt", Times, serif;
+    font-size: 55px;
+    color: #00aabe;
+    margin: auto;
+}
 
 #output {background-color: green; top: 0; bottom: 0; left: 0; right: 0; position: fixed;}
 
@@ -147,11 +117,11 @@ button.ticTacToe {
     width: 110px;
     height: 110px;
     opacity: 1.0;
+    justify-content: center;
+    align-items: center;
+    margin: auto
 }
 
-.man {
-    justify-content: center; align-items: center;
-}
 
 
 .gamePiece {
@@ -177,12 +147,16 @@ button.ticTacToe {
 .square {
     display: grid;
     font-family: Muli, sans-serif;
-    font-size: 50px;
     color: darkgoldenrod;
     background-color: transparent;
     user-select: none;
 }
-
+.square--big-font {
+    font-size: 40px;
+}
+.square--smaller-font {
+    font-size: 28px;
+}
 .border__right {
     border-right: 5px solid #00aabe;
 }
@@ -228,10 +202,3 @@ div.fixed {
     border: 3px solid #73AD21;
 }
 
-.bottom-left {
-    position: absolute; /* position the element absolutely */
-    bottom: 0; /* position the element at the bottom */
-    left: 0; /* position the element at the left */
-    color: #99dde5;
-    margin-bottom: 20px;
-}

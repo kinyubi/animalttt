@@ -14,13 +14,13 @@
 
   <script src="/js/plugins/jquery/jquery-3.6.min.js"></script>
   <script src="/js/plugins/colorbox/jquery.colorbox.js"></script>
-
+  <script src="/tictactoe/ttt-words.js"></script>
   <script src="/tictactoe/events.js"></script>
-  <script src="/tictactoe/tictactoe.js"></script>
-
+  <script src="/tictactoe/tictactoe.js" ></script>
+<!--  We put this here to force it to complete before document ready-->
 </head>
 <body>
-
+<div hidden id="word-lists"></div>
 <section id="page" class="ttt-container">
 
   <header id="game-title"><h1>Tic-Tac-Toe</h1></header>
@@ -28,7 +28,6 @@
   <div id="s-0" class=" square receptacle border__right border__bottom text-center row1 col1"></div>
   <div id="s-1" class=" square receptacle border__right border__bottom  text-center row1 col2">-</div>
   <div id="s-2" class="square receptacle border__bottom  text-center row1 col3">-</div>
-
 
   <div id="s-3" class="  square receptacle border__right border__bottom text-center">-</div>
   <div id="s-4" class=" square receptacle border__right border__bottom text-center">-</div>
@@ -38,22 +37,25 @@
   <div id="s-7" class=" square receptacle border__right  text-center">-</div>
   <div id="s-8" class=" square receptacle  text-center">-</div>
 
-
-  <div id="home-box" class="choice--grid"></div>
+  <div id="home-box" hidden class="man-wrapper"></div>
+  <div id="choices"></div>
+  <div id="choose-player">Pick the player you want...</div>
   <div id="buttons" style="margin: 24px">
     <button hidden id="new-game" class="ticTacToe " onClick="window.location.reload();">New Game</button>
-    <div id="choose-player">Pick the player you want...</div>
   </div>
-  <div id="left">
-    <div class="bottom-left">
-      <div>sound</div>
+  <div id="sound-control">
+    <div>sound</div>
       <label class="switch">
         <input id="tt-sound" name="tt-sound" type="checkbox" >
         <span class="slider round"></span>
       </label>
-    </div>
   </div>
 </section>
+<script>
 
+  // fetch the JSON file and parse it as an object
+
+
+</script>
 </body>
 </html>

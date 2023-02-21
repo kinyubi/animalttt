@@ -1,0 +1,601 @@
+.body-background {
+    background-color: #E7F6F8;
+}
+
+.header-container {
+    width: 100%;
+}
+
+.header-design {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.header-breadcrumbs {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 25px !important;
+}
+
+.header-logo {
+    margin-left: 0.5em;
+    height: 60px;
+    width: 4em;
+    display: inline-block;
+}
+
+.header-student-details {
+    display: inline-block;
+    margin-right: 7vw;
+
+}
+
+.header-student-name {
+    font-size: 1.4rem;
+}
+
+.header-dropdown {
+    display: inline-block;
+    float: right;
+}
+
+.header-dropdown-menu {
+    padding: 0;
+}
+
+.header-dropdown-item {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.header-dropdown-item:last-child {
+    border-bottom: 0 !important;
+}
+
+.header-dropdown-item:active {
+    background-color: #00AABE;
+}
+
+.header-dropdown-item:hover {
+    color: white;
+    background-color: #00AABE;
+}
+
+.header-dropdown-button {
+    width: auto !important;
+}
+
+.header-dropdown-button:focus {
+    box-shadow:none;
+}
+
+.header-current-animal-container {
+    display: inline-block;
+    margin-right: 0.2em;
+    float:right;
+    padding: 8px;
+}
+
+.header-next-animal-container {
+    display: inline-block;
+    margin-right: 1em;
+    float:right;
+    padding: 8px;
+}
+
+.header-logout-container {
+    display: inline-block;
+    margin-right: 1em;
+    float: right;
+    padding-top:4px;
+}
+
+.header-user-type-container {
+    display: inline-block;
+    margin-right: 1em;
+    float: right; margin-top:20px;
+    font-size: 0.45em;
+}
+
+.header-logout-button {
+    color: #32BACA;
+    border: none;
+    background: transparent;
+    width: auto !important;
+    outline: none;
+}
+
+.header-animal-image {
+    width: 100%;
+    vertical-align: unset;
+}
+
+.lesson-list-container {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.lesson-list {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 35px;
+    min-width: 100%;
+}
+
+.lesson-list-ul {
+    column-count: 2;
+    column-gap: 0;
+    width: 100%;
+    padding-left: 0;
+}
+
+.lesson-list-li {
+    display: inline-block;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.lesson-list-animal-image {
+    padding-right: 0;
+    margin-left: 1em;
+}
+
+.lesson-list-button-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.lesson-list-card {
+    min-width: auto !important;
+    border: 0;
+    padding-right: 1em;
+}
+
+.lesson-list-card > div {
+    border-bottom: 0;
+}
+
+.container-base {
+    margin: auto !important;
+}
+
+.container-student {
+    background-color: #fff;
+    padding: 3em 5em 5em 5em;
+}
+
+.list-group-student {
+    margin: auto;
+}
+
+.list-group-item-student-active {
+    background-color: #00AABE !important;
+    border-color: #90DAE2 !important;
+}
+
+.lesson-progress{
+    color: #32BACA;
+    font-weight: bold;
+    height: 40px;
+}
+
+.lesson-progress-bar{
+    height: 7px;
+    margin-top: 1em;
+}
+
+.progress-bar-completed{
+    background-color: #32BACA;
+}
+
+.progress-arrow-right{
+    width: 60px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/images/arrow-right.PNG);
+}
+
+.mastery-icon{
+    position: absolute;
+    right: 16px;
+    font-size: 18px;
+}
+
+.list-group-icon{
+    padding: unset;
+}
+
+.list-group-item-lesson{
+    border: none;
+    padding: 0rem .75rem;
+}
+
+.item-lesson-button{
+    font-weight: bold;
+}
+
+.lesson-group-items{
+    padding-left: 0.50rem;
+}
+
+.card-group-body{
+    padding: 0 0 0 2.5rem;
+}
+
+.lesson-header-label{
+    padding-left: 5.25rem;
+    font-weight: bold;
+    color: #01A9BD;
+    background-color: white;
+    border: none;
+}
+
+.mastery-group-icon{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.students-arrow-down{
+    height: 30px;
+    width: 30px;
+}
+
+.col-dropdown-students{
+    padding-right: 0;
+}
+
+.col-student-name{
+    padding-left: 0;
+}
+
+.lesson-script-description > a {
+    color: #00aabe !important;
+    font-weight: bold;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.chain-completed-word {
+    font-size: 2em;
+}
+
+.tapmap-active-box {
+    background-color: #E5F6F8;
+}
+
+.mobile-bars-container {
+    display: none;
+}
+
+.mobile-menu-overlay {
+    display: none;
+}
+
+@media only screen and (min-width: 769px) and (max-width:1024px) {
+    .header-student-details {
+        display: inline-block;
+        margin-right: 4vw;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width:768px) {
+    body{
+        overflow-x: hidden;
+    }
+
+    .header-breadcrumbs, .header-dropdown, .header-logout-container, .header-next-animal-container, .header-current-animal-container {
+        display: none;
+    }
+
+    .lesson-list-ul {
+        column-count: 1;
+    }
+
+    .mobile-bars-container{
+        display: inline-block;
+        float:right;
+        color: #32BACA;
+        margin-right: 1em;
+        margin-top: 2vw;
+    }
+
+    .mobile-bars {
+        cursor: pointer;
+    }
+
+    .mobile-menu-overlay {
+        display:block;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: rgba(255,255,255);
+        overflow-x: hidden;
+        transition-duration: 0.2s;
+        transform: translateX(100%);
+    }
+
+    .mobile-menu-overlay-show{
+        transition-duration: 0.2s;
+        transform: translateX(0%);
+    }
+
+    .mobile-menu-header {
+        border-bottom: 3px solid #32BACA;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        text-align:center;
+    }
+
+    .mobile-header-text {
+        font-size: 1em;
+        font-weight: bold;
+        margin-right: 3em;
+    }
+
+    .mobile-header-current-animal-container {
+        display: inline-block;
+        margin-left: 0.5em;
+        float:left;
+        height: 1.5em;
+    }
+
+    .mobile-header-next-animal-container {
+        display: inline-block;
+        margin-left: 0.5em;
+        float:left;
+        height: 1.5em;
+    }
+
+    .mobile-header-animal-image {
+        width:auto;
+        height:100%;
+    }
+
+    .mobile-header-close-container{
+        display: inline-block;
+        float:right;
+        color: #32BACA;
+        margin-right: 0.6em;
+    }
+
+    .mobile-header-close{
+        cursor: pointer;
+    }
+
+    .mobile-header-content{
+        text-align: right;
+        font-size: 0.7em;
+    }
+
+    .mobile-header-content-item{
+        padding: 0.5em 0.5em;
+        border-bottom: 2px solid rgba(0,0,0,.125);
+    }
+
+    .mobile-header-content-item > a {
+        color: black;
+    }
+
+    .mobile-header-content-item > a:hover {
+        text-decoration:none;
+    }
+
+    .mobile-header-content-item-inactive {
+        background-color: #EFEFEF;
+    }
+
+    .mobile-header-content-item-inactive > a {
+        color: #6c757d;
+    }
+
+     .mobile-header-content-item-active {
+         background-color: #00AABE;
+         color: white;
+     }
+}
+
+.practice-button {
+    height: 100%;
+    width: 100%;
+}
+
+.practice-button:hover {
+    box-shadow: none;
+}
+
+.practice-button-td {
+    width: 100%;
+}
+
+.send-email-button-container {
+    padding-left: 50%;
+}
+
+.send-email-button {
+    padding: 7px 0;
+    color: white;
+    border: none;
+    background: #00aabe;
+}
+
+.zoo-animals-title {
+    font-family: "Muli";
+    color: black;
+}
+
+.email-content-container {
+    margin: 0 !important;
+}
+
+.email-content-inner-container {
+    border: 1px solid;
+    padding: 5px !important;
+    margin-bottom: 10px;
+    cursor: text;
+}
+
+.email-body {
+    width: 100%;
+    resize: none;
+    display: inline;
+    white-space: pre-wrap;
+}
+
+#warmup-container {
+    padding-bottom: 50px;
+}
+
+.practice-wordlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-wordlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.other-wordlist {
+
+}
+
+@media (max-width: 575px) {
+  .practice-wordlist {font-size: 1.5rem !important;}
+  .other-wordlist {font-size: 1.5rem !important;}
+  .small-wordlist {font-size: 1rem !important;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .practice-wordlist {font-size: 2rem !important;}
+  .other-wordlist {font-size: 2rem !important;}
+  .small-wordlist {font-size: 1.5rem !important;}
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .practice-wordlist {font-size: 2rem !important;}
+  .other-wordlist {font-size: 2rem !important;}
+  .small-wordlist {font-size: 1.5rem !important;}
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  .practice-wordlist {font-size: 2rem !important;}
+  .other-wordlist {font-size: 2rem !important;}
+  .small-wordlist {font-size: 1.7rem !important;}
+}
+
+.width-auto {
+    width: auto;
+}
+
+#practice-main {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#practice-sidebar > div:nth-child(2) {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#practiceTime {
+    font-size: 2rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.unit-overlay {
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    opacity: 0.8;
+}
+
+.unit-overlay-locked {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.unit-overlay-locked-inner {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: #32BACA;
+    font-size: 2.5em;
+}
+
+.lesson-overlay {
+    background: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    opacity: 0.8;
+}
+
+.lesson-overlay-locked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.lesson-overlay-locked-inner {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-size: 1.8em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.lesson-overlay-icon {
+    color: #32BACA;
+    text-align: center;
+    font-size: 2em;
+}
+
+.lesson-overlay-text {
+    text-align:center;
+}

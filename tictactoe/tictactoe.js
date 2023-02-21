@@ -1,6 +1,7 @@
 /* =============================================
    ENUMS AND CONSTANTS SECTION
 ================================================*/
+
 /**
  * an enum for game state
  * @type {{TeamZeroWins: number, Draw: number, Unfinished: number, TeamOneWins: number}}
@@ -56,7 +57,6 @@ const logToConsole = true
 
 const gamePieceSize = 100
 
-gMute = false
 
 /* =============================================
    GLOBALS SECTION
@@ -73,6 +73,8 @@ let touchState = TouchState.None
 
 let gDraggedElement = null
 let gDraggedParent = null
+
+
 /**
  * an array containing the game piece image src for each team's pieces
  * @type {string[]}
@@ -80,6 +82,7 @@ let gDraggedParent = null
 let gMascotImages = []
 let gMascotNumbers = []
 let gMascotWordLists = []
+let gAllWordLists
 /**
  * Which team owns the current move - 0 for student, 1 for teacher
  * @type {number}
@@ -87,11 +90,14 @@ let gMascotWordLists = []
 let gWhoseMove = 0  // 0 for your-team, 1 for my-team
 let gMoveCount = 0
 
-let gWordList= [];
-
 /* =============================================
    FUNCTIONS SECTION
    =============================================*/
+// define a function that returns a promise
+
+// given this promise function:
+
+
 /**
  * log an event to console
  * @param e the event we are reporting on
@@ -109,11 +115,12 @@ function playIfNotMute(sound) {
 
 /**
  * logs a message identifying the function the message was sent from
+ * @param source
  * @param message
  */
-function logMessage(message = 'completed') {
+function logInfo(source, message = 'completed') {
   if (logToConsole) {
-    console.log(`${logMessage.caller.name}: ${message}`)
+    console.log(`${source}: ${message}`)
   }
 }
 
@@ -133,41 +140,38 @@ function throwIfNotFound(selector) {
   }
 }
 
-function getLessons() {
-  logMessage("ENTER getLessons")
-  let response = await fetch("/tictactoe/ttt_words.json")
-  jqxhr.done(function (data) {
-    let len =  data.length;
-    logMessage(`${len} word lists imported.`);
-    gMascotWordLists = [];
-    for (let number in gMascotNumbers){
-      gMascotWordLists.push(data[number])
-    }
-    gWordList = gMascotWordLists[0]
-    logMessage(gWordList.join(','))
-    logMessage("EXIT getLessons")
-  })
-}
+/**
+ * get a list of 5 unique numbers between 4 and 103 that correspond to
+ * lesson numbers and animals
+ */
+function getRandomMascotNumbers(){
+  logInfo("getRandomMascotNumbers", 'ENTER')
+  const values = new Set();
 
+  while (values.size < 6) {
+    const randomValue = Math.floor(Math.random() * 100) + 4;
+    values.add(randomValue);
+  }
+
+  gMascotNumbers = Array.from(values);
+  logInfo('getRandomMascotNumbers', "Mascot numbers: " + gMascotNumbers.join(', '))
+  logInfo('getRandomMascotNumbers', "EXIT getRandomMascotNumbers")
+}
 /**
  * called by buildTeamPieces.
  * randomly select avatars (img src) for two teams
  * @returns {string[]} a two-element array containing the src for the game piece img for each team
  */
-function getMascotImages(count=6) {
-  logMessage("ENTER getMascotImages")
-  let mascots = new Array(10).fill(-1)
-  const set = new Set(mascots)
-  mascots = Array.from(set).slice(0, 6)
-  for (let i=0; i<10; i++) mascots[i] = Math.floor(Math.random() * 104) + 1;
-  let size = gamePieceSize
-
+function getMascotImages() {
+  logInfo("ENTER getMascotImages")
+  gMascotWordLists = [];
   gMascotImages = []
-  for (let i = 0; i < 6; i++) {
-    gMascotImages.push(`/images/tictactoe/animals/jpg70/${mascots[i]}.jpg`)
-  }
-  gMascotNumbers = mascots
-  logMessage("EXIT getMascotImages")
+  gMascotNumbers.forEach((number) => {
+    gMascotWordLists.push(gAllWordLists[number])
+    gMascotImages.push(`/images/tictactoe/animals/jpg70/${number}.jpg`)
+  })
+
+  logInfo('getMascotImages', "EXIT getMascotImages")
 }
 
 /**
@@ -187,16 +191,25 @@ function buildPiece(team) {
   let size = gamePieceSize
   let imageSource = gMascotImages[team]
   let img = `<img id="${pieceId}" height="${size}" width="${size}" src="${imageSource}" alt="${pieceId} "`
-  img += 'class="gamePiece mover mad"   draggable="true" >'
+  img += 'class="gamePiece mover"   draggable="true" >'
+
+  $('#choose-player').css("display", "none")
+  $('.choice-box').css("display", "none")
   let $homeBox =$('#home-box')
   $homeBox.empty()
   $homeBox.append(img)
   addMovedItemHandlers('#' + pieceId)
-
-  logMessage(img)
+  $homeBox.css("display", "grid")
+  logInfo('buildPiece', img)
 }
 
+/**
+ * What we do when we want to display their choice of game pieces
+ * @param which
+ */
 function choosePiece(which) {
+  let method = 'choosePiece'
+  logInfo(method, "ENTER")
   if (which !== 0) {
     gMascotImages[0] = gMascotImages[which]
   }
@@ -204,16 +217,18 @@ function choosePiece(which) {
   const $homeBox = $('#home-box')
   $homeBox.empty()
   $homeBox.css("display", "grid")
-  $homeBox.removeClass("choice--grid")
-  $homeBox.addClass("home-box--grid")
 
-  $('#new-game').css("display", "block")
+
+  $('#new-game').css("display", "inline")
   $('#choose-player').css("display", "none")
 
   for (let i=0; i<2; i++ ){
     gMascotImages[i] = gMascotImages[i].replace("jpg70", "jpg100")
   }
+  fillSquaresWithWords(which)
   buildPiece(gWhoseMove)
+  logInfo(method, gMascotImages[0])
+  logInfo(method, "EXIT")
 }
 
 /**
@@ -223,30 +238,32 @@ function choosePiece(which) {
  * Turns on the choose player message
  */
 function buildChoices() {
-  const CHOICES_COUNT = 5
-  const $homeBox = $('#home-box')
+  const method = 'buildChoices'
+  logInfo(method, "ENTER")
+  const CHOICES_COUNT = 6
+  $('#home-box').css("display", "none")
+  const $choices = $('#choices')
 
-  $homeBox.empty()
+  $choices.empty()
 
   let childStr = ''
   try {
-    $homeBox.empty()
+    $choices.empty()
     for (let i=0; i<CHOICES_COUNT; i++) {
       let animalChoice = `<img id="choice-${i}" height="70" width="70" src="${gMascotImages[i]}" alt="choice"`
-      animalChoice += `onclick="choosePiece(${i})" class="man choice-box"> `
+      animalChoice += `onclick="choosePiece(${i})" class="choice-box" draggable="false"> `
       childStr += animalChoice
     }
-    $homeBox.append(childStr)
+    $choices.append(childStr)
   }
   catch(e) {
     console.error(e);
   }
   playIfNotMute(tadaSound)
-  $homeBox.removeClass("home-box--grid")
-  $homeBox.addClass("choice--grid")
+  $choices.css("display", "grid")
+  $('.choice-box').css("display", "grid")
   $('#new-game').css("display", "none")
-  $('#choose-player').css("display", "block")
-
+  logInfo(method, "EXIT")
 }
 /**
  * randomly shuffles the array of words in place
@@ -264,21 +281,30 @@ function shuffleInPlace(array) {
  * Adds a word to innerText of each square(0 through 8)
  * @returns {string[]} the array of shuffled words.
  */
-function fillSquaresWithWords() {
-  let tempWords = gWordList;
+function fillSquaresWithWords(which=0) {
+  const method = 'fillSquaresWithWords'
+  logInfo(method, "ENTER")
+
   // let tempWords = ['fat', 'cat', 'hat', 'sat', 'mat', 'pat', 'bat', 'rat', 'vat']
-  if (params.has("words")) {
-    let list = params.get("words")
-    tempWords = list.split('-')
-  }
+  // if (params.has("words")) {
+  //   let list = params.get("words")
+  //   tempWords = list.split('-')
+  // }
+  let tempWords = gMascotWordLists[which]
+  let longestWord = 0
   shuffleInPlace(tempWords)
   for (let i = 0; i < 9; i++) {
     words[i] = tempWords[i]
+    if (words[i].length > longestWord) longestWord = words[i].length
     let square = $(`#s-${i}`)
     square.html(`<div id="x-${i}" class="sword">${words[i]}</div>`)
     // square.addClass("py-2")
   }
-  logMessage()
+  sizes  = (longestWord > 7) ? ['square--big-font', 'square--smaller-font'] : ['square--smaller-font', 'square--big-font']
+
+  $('.square').removeClass(sizes[0]).addClass(sizes[1])
+
+  logInfo(method, "EXIT")
 }
 
 /**
@@ -354,6 +380,12 @@ function winner() {
     });
 }
 
+function stuffElement(data){
+  console.log(`${data.length} word lists loaded`);
+  gAllWordLists = data
+  // const resultsDiv = document.getElementById('word-lists');
+  // resultsDiv.innerText = JSON.stringify(data);
+}
 
 // getting some screen information
 function screenInfo() {
@@ -361,24 +393,42 @@ function screenInfo() {
   let height = $(window).height();
   $('#info').text(`${width}W x ${height}H`)
 }
-// ========= Dynamic HTML Building
-let response = await fetch("/tictactoe/ttt_words.json")
-let json = await response.json();
+
+function fetchWordLists() {
+  // fetch('/tictactoe/ttt_words.json')
+  //   .then(response => response.json())
+  //   .then(jsonResponse => {
+  //     const element = document.getElementById('word-lists')
+  //     element.innerText = jsonResponse.text()
+  //     console.log(element.innerText)
+  //     // stuffElement(data)
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //   });
+}
+
 /* =============================================
    MAIN SECTION
 ================================================*/
 // get parameters passed in with URL
 const params = new URLSearchParams(window.location.search)
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded',function () {
+  addContainerHandlers($('.square'))
+
+  gAllWordLists = getWordLists()
+  getRandomMascotNumbers()
+  logInfo(`${gAllWordLists.length} word lists imported.`);
   getMascotImages()
-  getLessons()
+
 
   fillSquaresWithWords()
   // $(".square").addClass("sword")
-  addContainerHandlers(".sword")
   buildChoices()
 });
+
+
 
 
 
